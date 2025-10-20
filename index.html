@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Secret Notepad</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="login-screen">
+    <h2>Enter Password</h2>
+    <input type="password" id="passwordInput" placeholder="Password" />
+    <button id="loginBtn">Enter</button>
+    <p id="errorMsg"></p>
+  </div>
+
+  <div id="notepad-screen" style="display: none;">
+    <h2>📝 Secret Notepad</h2>
+    <textarea id="notepad" placeholder="Start typing..."></textarea>
+    <br>
+    <button id="saveBtn">Save</button>
+    <button id="logoutBtn">Logout</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
