@@ -15,6 +15,8 @@ const underlineBtn = document.getElementById("underlineBtn");
 const themeToggle = document.getElementById("themeToggle");
 const logoutBtn = document.getElementById("logoutBtn");
 
+const accentPicker = document.getElementById("accentColor");
+
 let notes = {};
 let currentNote = "Note1";
 let darkMode = true;
@@ -37,6 +39,7 @@ document.getElementById("loginBtn").addEventListener("click", async ()=>{
     notepadScreen.style.display = "flex";
     passwordInput.value = "";
     loadNotes();
+    loadAccentColor();
   } else {
     errorMsg.textContent = "❌ Wrong password";
   }
@@ -119,3 +122,18 @@ themeToggle.addEventListener("click", ()=>{
     notepad.style.color = "#000";
   }
 });
+
+// ACCENT COLOR PICKER
+accentPicker.addEventListener("input", (e)=>{
+  const color = e.target.value;
+  document.documentElement.style.setProperty("--accent-color", color);
+  localStorage.setItem("accentColor", color);
+});
+
+function loadAccentColor(){
+  const saved = localStorage.getItem("accentColor");
+  if(saved){
+    document.documentElement.style.setProperty("--accent-color", saved);
+    accentPicker.value = saved;
+  }
+}
