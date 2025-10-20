@@ -1,5 +1,5 @@
-// SHA-256 password hash of Goobinator69
-const PASSWORD_HASH = "7ee02841c622e437fb298d26bed728879936d58618dd634f6736e192c3332871";
+// PASSWORD
+const PASSWORD = "055724167.!";
 
 const loginScreen = document.getElementById("login-screen");
 const notepadScreen = document.getElementById("notepad-screen");
@@ -14,27 +14,15 @@ const italicBtn = document.getElementById("italicBtn");
 const underlineBtn = document.getElementById("underlineBtn");
 const themeToggle = document.getElementById("themeToggle");
 const logoutBtn = document.getElementById("logoutBtn");
-
 const accentPicker = document.getElementById("accentColor");
 
 let notes = {};
 let currentNote = "Note1";
 let darkMode = true;
 
-// SHA256 helper
-async function sha256Hex(message){
-  const msgBuffer = new TextEncoder().encode(message);
-  const hashBuffer = await crypto.subtle.digest("SHA-256", msgBuffer);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map(b=>b.toString(16).padStart(2,"0")).join("");
-}
-
 // LOGIN
-document.getElementById("loginBtn").addEventListener("click", async ()=>{
-  errorMsg.textContent = "";
-  const input = passwordInput.value || "";
-  const hash = await sha256Hex(input);
-  if(hash === PASSWORD_HASH){
+loginBtn.addEventListener("click", ()=>{
+  if(passwordInput.value === PASSWORD){
     loginScreen.style.display = "none";
     notepadScreen.style.display = "flex";
     passwordInput.value = "";
@@ -72,7 +60,11 @@ function renderTabs(){
     tab.textContent = note;
     tab.classList.add("tab");
     if(note===currentNote) tab.classList.add("active");
-    tab.addEventListener("click", ()=>{ currentNote=note; loadCurrentNote(); renderTabs(); });
+    tab.addEventListener("click", ()=>{
+      currentNote=note;
+      loadCurrentNote();
+      renderTabs();
+    });
     tabsContainer.appendChild(tab);
   });
 }
@@ -123,17 +115,4 @@ themeToggle.addEventListener("click", ()=>{
   }
 });
 
-// ACCENT COLOR PICKER
-accentPicker.addEventListener("input", (e)=>{
-  const color = e.target.value;
-  document.documentElement.style.setProperty("--accent-color", color);
-  localStorage.setItem("accentColor", color);
-});
-
-function loadAccentColor(){
-  const saved = localStorage.getItem("accentColor");
-  if(saved){
-    document.documentElement.style.setProperty("--accent-color", saved);
-    accentPicker.value = saved;
-  }
-}
+// ACCENT COLOR
