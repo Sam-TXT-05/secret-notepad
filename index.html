@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Secret Notepad</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Secret Notepad</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/a81368914c.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div id="login-screen">
-    <h2>Enter Password</h2>
-    <input type="password" id="passwordInput" placeholder="Password" />
-    <button id="loginBtn">Enter</button>
-    <p id="errorMsg"></p>
-  </div>
 
-  <div id="notepad-screen" style="display: none;">
-    <h2>📝 Secret Notepad</h2>
-    <textarea id="notepad" placeholder="Start typing..."></textarea>
-    <br>
-    <button id="saveBtn">Save</button>
-    <button id="logoutBtn">Logout</button>
-  </div>
+<!-- Login Screen -->
+<div id="login-screen">
+  <h1>Enter Password</h1>
+  <input type="password" id="passwordInput" placeholder="Password">
+  <button id="loginBtn">Enter</button>
+  <p id="errorMsg"></p>
+</div>
 
-  <script src="script.js"></script>
+<!-- Notepad Screen -->
+<div id="notepad-screen" style="display:none;">
+  <div class="toolbar">
+    <div class="tabs" id="tabs"></div>
+    <button id="addNote"><i class="fas fa-plus"></i></button>
+    <button id="boldBtn"><i class="fas fa-bold"></i></button>
+    <button id="italicBtn"><i class="fas fa-italic"></i></button>
+    <button id="underlineBtn"><i class="fas fa-underline"></i></button>
+    <button id="themeToggle"><i class="fas fa-adjust"></i></button>
+    <button id="logoutBtn"><i class="fas fa-sign-out-alt"></i></button>
+  </div>
+  <textarea id="notepad" placeholder="Start typing..."></textarea>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
