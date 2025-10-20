@@ -1,4 +1,8 @@
 /* GENERAL */
+:root {
+  --accent-color: #007bff;
+}
+
 body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
@@ -21,7 +25,7 @@ input, textarea, button {
 }
 
 input:focus, textarea:focus {
-  outline: 2px solid #007bff;
+  outline: 2px solid var(--accent-color);
 }
 
 /* LOGIN SCREEN */
@@ -39,12 +43,12 @@ input:focus, textarea:focus {
 
 button {
   cursor: pointer;
-  background-color: #007bff;
+  background-color: var(--accent-color);
   color: white;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: color-mix(in srgb, var(--accent-color) 80%, black);
 }
 
 #errorMsg {
@@ -69,6 +73,14 @@ button:hover {
 
 .toolbar button {
   margin-left: 5px;
+  background-color: var(--accent-color);
+  color: white;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.toolbar button:hover {
+  transform: scale(1.05);
+  background-color: color-mix(in srgb, var(--accent-color) 80%, black);
 }
 
 .tabs {
@@ -86,7 +98,7 @@ button:hover {
 }
 
 .tab.active {
-  background-color: #007bff;
+  background-color: var(--accent-color);
 }
 
 /* NOTEPAD TEXTAREA */
@@ -99,6 +111,31 @@ button:hover {
   font-size: 16px;
   border-radius: 6px;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ACCENT COLOR PICKER */
+.accent-picker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.accent-picker label {
+  margin-right: 8px;
+  font-weight: 600;
+}
+
+#accentColor {
+  width: 40px;
+  height: 30px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: none;
 }
 
 /* ANIMATION */
